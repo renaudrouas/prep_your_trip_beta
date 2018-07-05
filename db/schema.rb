@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_05_125957) do
+ActiveRecord::Schema.define(version: 2018_07_05_130800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 2018_07_05_125957) do
     t.float "longitude"
     t.string "reservation_number"
     t.integer "kind", default: 0
+    t.bigint "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "checklists", force: :cascade do |t|
+    t.text "description"
+    t.boolean "done", default: false
+    t.string "title"
+    t.time "completed_at"
     t.bigint "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

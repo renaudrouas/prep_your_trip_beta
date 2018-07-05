@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_05_123928) do
+ActiveRecord::Schema.define(version: 2018_07_05_124721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "travels", force: :cascade do |t|
+    t.string "reservation_number"
+    t.string "compagny_name"
+    t.time "start_date"
+    t.time "end_date"
+    t.string "address_in"
+    t.string "address_out"
+    t.float "latin"
+    t.float "latout"
+    t.float "lngin"
+    t.float "lngout"
+    t.integer "mode"
+    t.string "ticket_file"
+    t.bigint "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_travels_on_trip_id"
+  end
 
   create_table "trips", force: :cascade do |t|
     t.string "title"
@@ -45,5 +64,6 @@ ActiveRecord::Schema.define(version: 2018_07_05_123928) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "travels", "trips"
   add_foreign_key "trips", "users"
 end

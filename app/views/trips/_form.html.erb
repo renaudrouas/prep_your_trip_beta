@@ -1,0 +1,31 @@
+<%= simple_form_for(@trip) do |f| %>
+<%= f.error_notification %>
+<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+<div class="form-inputs form-color my-form-box">
+  <%= f.input :title,  label: "Donnez un nom à votre voyage",
+  placeholder: '2 semaines en Afrique',
+  input_html: { class: 'my-input' },
+  label_html: { class: 'my-label' } %>
+
+
+
+  <%= f.input :destination, label: "Où allez vous?", placeholder: 'Nom du pays ou de la ville', input_html: { id: "placeSearch"}, label_html: { class: 'my-label' } %>
+
+
+
+  <%= f.input :start_date,  label: "Quand partez vous ?",
+  placeholder: 'Date',
+  input_html: { class: 'my-input' },
+  label_html: { class: 'my-label' },
+  html5: true %>
+  <%= f.input :end_date,  label: "Quand revenez vous?",
+  placeholder: 'Date',
+  input_html: { class: 'my-input' },
+  label_html: { class: 'my-label' },
+  html5: true %>
+</div>
+<div class="form-actions">
+  <%= f.button :submit, "Créer mon voyage", class:'btn btn-primary'%>
+</div>
+<% end %>

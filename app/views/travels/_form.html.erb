@@ -1,0 +1,19 @@
+  <%= simple_form_for [@trip, @travel] do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="form-inputs form-color">
+      <%= f.input :reservation_number, label: 'Numéro de réservation', placeholder: '24XY22B', input_html: { class: 'my-input' }, label_html: { class: 'my-label' } %>
+      <%= f.input :compagny_name, label: 'Compagnie', placeholder: 'RyanAir, Air France', input_html: { class: 'my-input' }, label_html: { class: 'my-label' } %>
+      <%= f.input :start_date, label: 'Date de départ', placeholder: 'Date', input_html: { class: 'my-input' }, label_html: { class: 'my-label' },
+            html5: true  %>
+      <%= f.input :end_date, label: "Date d'arrivée", placeholder: 'Date', input_html: { class: 'my-input' }, label_html: { class: 'my-label' },
+            html5: true %>
+      <%= f.input :address_in, label: "Adresse de départ", placeholder: '167 rue Paradis, Marseille', input_html: { id: "origin-input" }, label_html: { class: 'my-label' } %>
+      <%= f.input :address_out, label: "Adresse d'arrivée'", placeholder: '167 rue Paradis, Marseille', input_html: { id: "destination-input" }, label_html: { class: 'my-label' } %>
+      <%= f.input :mode, collection: Travel.modes.keys, label: 'Type de transport', placeholder: 'Hotel, Camping', input_html: { class: 'my-input' }, label_html: { class: 'my-label' } %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, "Créez votre transport", class: "btn btn-primary"%>
+    </div>
+    <% end %>

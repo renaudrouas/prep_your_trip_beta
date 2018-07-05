@@ -1,0 +1,22 @@
+<%= simple_form_for [@trip, @accomodation] do |f| %>
+<%= f.error_notification %>
+<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+<div class="form-inputs form-color">
+
+      <%= f.input :address, label: "Entrez votre recherche", placeholder: 'Nom ou Adresse', input_html: { id: "pac-input"}, label_html: { class: 'my-label' } %>
+
+      <%= f.input :address, label: "Adresse", placeholder: '10 Place de la Concorde, 75008 Paris', input_html: { class: 'my-input' }, label_html: { class: 'my-label' } %>
+      <%= f.input :name, label: "Nom de l'hébergement", placeholder: 'Hôtel de Crillon', input_html: { class: 'my-input' }, label_html: { class: 'my-label' } %>
+      <%= f.input :phone_number, label: "Numéro de téléphone", placeholder: '0102030405', input_html: { class: 'my-input' }, label_html: { class: 'my-label' } %>
+      <%= f.input :kind, collection: Accomodation.kinds.keys, label: "Type d'hébergement", placeholder: 'Hôtel', input_html: { class: 'my-input' }, label_html: { class: 'my-label' } %>
+      <%= s.input :start_date, label: "Date check-in", placeholder: '01/01/2000', input_html: { class: 'my-input' }, label_html: { class: 'my-label' }, html5: true %>
+      <%= s.input :end_date, label: "Date check-out", placeholder: '01/01/2000', input_html: { class: 'my-input' }, label_html: { class: 'my-label' }, html5: true %>
+      <%= s.input :reservation_number, label: "Numéro de réservation", placeholder: '22XY50B', input_html: { class: 'my-input' }, label_html: { class: 'my-label' } %>
+      <%= s.input :trip_id, as: :hidden, input_html:{value:@trip.id}   %>
+      <%= s.input :id, as: :hidden %>
+    <div class="form-actions">
+      <%= s.button :submit, "Créez votre hébergement", class: "btn btn-primary"%>
+    </div>
+
+<% end %>
